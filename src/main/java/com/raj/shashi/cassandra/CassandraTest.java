@@ -1,6 +1,10 @@
 package com.raj.shashi.cassandra;
 
+
+import java.util.List;
+
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 
 /**
@@ -36,6 +40,13 @@ public class CassandraTest {
          + " VALUES(1,'ram', 'Hyderabad', 9848022338, 50000);" ;
 		 session.execute(query);
 		 System.out.println("data inserted.");*/
+		
+		String query="select * from emp";
+		com.datastax.driver.core.ResultSet result=session.execute(query);
+		List<Row> list=(result.all());
+		list.stream().forEach(row->{
+			System.out.println(row);
+		});
 		 
 
 	}
